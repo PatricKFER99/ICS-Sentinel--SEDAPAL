@@ -6,13 +6,13 @@
 ![Domain](https://img.shields.io/badge/Dominio-Ciberseguridad%20Industrial-blue)
 ![Compliance](https://img.shields.io/badge/Normativa-IEC%2062443-orange)
 
-## 📋 Resumen Ejecutivo
+##  Resumen Ejecutivo
 
 **ICS Sentinel** es una solución de software desarrollada por **DataCraft Victory** para cerrar la brecha entre la operación física y la seguridad digital. 
 
 Este proyecto simula una interfaz HMI (Interfaz Hombre-Máquina) para una estación de bombeo hidráulico (contexto SEDAPAL), integrando un **Sistema de Detección de Intrusos (IDS)** directamente en el frontend. Su objetivo es identificar anomalías en los sensores provocadas por ciberataques de inyección de datos (*Fuzzing*) antes de que causen daños catastróficos a la maquinaria.
 
-## 🚀 Funcionalidades Clave
+##  Funcionalidades Clave
 
 ### 1. Gemelo Digital (PLC Simulado)
 * **Monitoreo en Tiempo Real:** Visualización de presión (PSI), RPM y Caudal con actualización de frecuencia de 1Hz.
@@ -36,7 +36,7 @@ Diseñado para ser ligero, rápido y desplegable en servidores Edge.
 | **UI/UX** | Tailwind CSS | Diseño "Dark Mode" de alto contraste (Estándar SCADA). |
 | **Iconografía** | Lucide React | Indicadores visuales semánticos. |
 
-## 🔮 Roadmap y Visión (Futuro del Proyecto)
+##  Roadmap y Visión (Futuro del Proyecto)
 
 Este proyecto tiene un plan de escalabilidad para convertirse en un producto IoT físico:
 
@@ -45,7 +45,7 @@ Este proyecto tiene un plan de escalabilidad para convertirse en un producto IoT
 - [ ] **Fase 3:** Conexión a Base de Datos (Supabase) para auditoría forense de ataques.
 - [ ] **Fase 4:** Implementación de protocolo MQTT para comunicación industrial real.
 
-## 📦 Instalación Local
+##  Instalación Local
 
 Para desarrolladores o auditores que deseen probar el entorno:
 
@@ -65,7 +65,7 @@ Para desarrolladores o auditores que deseen probar el entorno:
     npm run dev
     ```
 
-## 👨‍💻 Autoría y Derechos
+##  Autoría y Derechos
 
 **Arquitecto de Software:**
 **Patrick Fernando Lopez Meza**

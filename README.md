@@ -1,77 +1,37 @@
-# 🛡️ ICS Sentinel - SCADA & IDS Monitor
+# ICS Sentinel - Monitor de Seguridad Industrial (HMI + IDS)
 
-**Sistema de Monitoreo HMI con Detección de Intrusos para Infraestructuras Críticas (OT).**
+## Sobre el Proyecto
+Este proyecto, desarrollado bajo el nombre de **ICS Sentinel**, nace con el objetivo de cerrar la brecha entre las operaciones industriales (OT) y la seguridad informática (IT).
 
-![Status](https://img.shields.io/badge/Estado-Prototipo%20Funcional-green)
-![Domain](https://img.shields.io/badge/Dominio-Ciberseguridad%20Industrial-blue)
-![Compliance](https://img.shields.io/badge/Normativa-IEC%2062443-orange)
+No se trata solo de un panel visual. Es una prueba de concepto técnica que demuestra cómo un sistema SCADA moderno puede integrar defensas activas contra ciberataques. Fue diseñado pensando en la infraestructura crítica, como estaciones de bombeo o plantas de tratamiento, donde un dato falso puede causar daños físicos reales.
 
-##  Resumen Ejecutivo
+El propósito principal de este repositorio es servir como base educativa y funcional para entender cómo proteger protocolos industriales frente a técnicas de intrusión como la inyección de datos (Fuzzing).
 
-**ICS Sentinel** es una solución de software desarrollada por **DataCraft Victory** para cerrar la brecha entre la operación física y la seguridad digital. 
+## ¿Qué hace exactamente?
 
-Este proyecto simula una interfaz HMI (Interfaz Hombre-Máquina) para una estación de bombeo hidráulico (contexto SEDAPAL), integrando un **Sistema de Detección de Intrusos (IDS)** directamente en el frontend. Su objetivo es identificar anomalías en los sensores provocadas por ciberataques de inyección de datos (*Fuzzing*) antes de que causen daños catastróficos a la maquinaria.
+El sistema simula el comportamiento de un PLC (Controlador Lógico Programable) conectado a una bomba hidráulica. Tiene dos componentes principales que trabajan en paralelo:
 
-##  Funcionalidades Clave
+1.  **Interfaz HMI (Frontend):**
+    Un panel de control web que permite a los operadores visualizar la telemetría en tiempo real: presión (PSI), rotación (RPM) y caudal. Está diseñado con un modo oscuro de alto contraste para reducir la fatiga visual en salas de control.
 
-### 1. Gemelo Digital (PLC Simulado)
-* **Monitoreo en Tiempo Real:** Visualización de presión (PSI), RPM y Caudal con actualización de frecuencia de 1Hz.
-* **Comportamiento Estocástico:** El sistema simula las variaciones naturales y el ruido de señal de sensores industriales reales.
+2.  **Sistema de Detección de Intrusos (IDS):**
+    A diferencia de los paneles tradicionales que solo "muestran" datos, este sistema "analiza" los datos. Cuenta con un algoritmo interno que valida si la presión recibida es físicamente posible. Si detecta un pico anormal (típico de un ciberataque o falla de sensor), el sistema entra automáticamente en estado de alerta y bloquea la operación lógica.
 
-### 2. Ciber-Defensa Activa (IDS)
-* **Detección de Anomalías:** Algoritmo lógico que monitorea constantemente los umbrales operativos seguros.
-* **Alerta Temprana:** Cambio inmediato de estado a `CRITICAL` visual y bloqueo lógico al detectar valores fuera del rango físico posible (ej: Picos de presión > 130 PSI repentinos).
+## Cómo se construyó (Stack Tecnológico)
 
-### 3. Laboratorio de Pentesting
-* **Botón de Ataque (Fuzzing):** Herramienta incorporada para auditores que inyecta datos aleatorios/maliciosos en el bus de datos simulado, permitiendo validar la resiliencia del sistema.
+La arquitectura es híbrida, combinando desarrollo web moderno con lógica de sistemas embebidos:
 
-## 🛠️ Stack Tecnológico
+* **Frontend:** Construido con **React y Vite** para garantizar una actualización de datos fluida y sin recargas.
+* **Visualización:** Se utiliza la librería **Recharts** para renderizar las series temporales de los sensores con alta fidelidad.
+* **Firmware Simulado:** Se incluye una carpeta `firmware_plc/` con código en **C puro**. Este código representa la lógica que iría dentro del chip físico del PLC, encargada de leer los sensores y ejecutar las paradas de emergencia.
 
-Diseñado para ser ligero, rápido y desplegable en servidores Edge.
+## Guía de Uso para Desarrolladores
 
-| Componente | Tecnología | Propósito |
-| :--- | :--- | :--- |
-| **Core** | React.js + Vite | Rendimiento reactivo sin recargas. |
-| **Visualización** | Recharts | Gráficos de series temporales de alta velocidad. |
-| **UI/UX** | Tailwind CSS | Diseño "Dark Mode" de alto contraste (Estándar SCADA). |
-| **Iconografía** | Lucide React | Indicadores visuales semánticos. |
+Si deseas utilizar este proyecto como base para tus propias pruebas o para entender la lógica SCADA:
 
-##  Roadmap y Visión (Futuro del Proyecto)
-
-Este proyecto tiene un plan de escalabilidad para convertirse en un producto IoT físico:
-
-- [x] **Fase 1:** Simulación web y lógica de defensa (Completado).
-- [ ] **Fase 2:** Integración IoT con ESP32/Arduino para lectura de sensores físicos reales.
-- [ ] **Fase 3:** Conexión a Base de Datos (Supabase) para auditoría forense de ataques.
-- [ ] **Fase 4:** Implementación de protocolo MQTT para comunicación industrial real.
-
-##  Instalación Local
-
-Para desarrolladores o auditores que deseen probar el entorno:
-
-1.  **Clonar el repositorio:**
-    ```bash
-    git clone [https://github.com/PatricKFER99/ICS-Sentinel--SEDAPAL.git](https://github.com/PatricKFER99/ICS-Sentinel--SEDAPAL.git)
-    ```
-
-2.  **Instalar dependencias:**
-    ```bash
-    cd ICS-Sentinel--SEDAPAL
-    npm install
-    ```
-
-3.  **Ejecutar entorno:**
-    ```bash
-    npm run dev
-    ```
-
-##  Autoría y Derechos
-
-**Arquitecto de Software:**
-**Patrick Fernando Lopez Meza**
-*Fundador de DataCraft Victory | Especialista en Seguridad OT*
-*Secretario de Asuntos Tecnológicos - IESTP "Arturo Sabroso Montoya"*
-
----
-**© 2026 DataCraft Victory.**
-*Innovación en Seguridad para la Industria Peruana.*
+**1. Instalación:**
+Clona el repositorio e instala las dependencias de Node.js:
+```bash
+git clone [https://github.com/PatricKFER99/ICS-Sentinel--SEDAPAL.git](https://github.com/PatricKFER99/ICS-Sentinel--SEDAPAL.git)
+cd ICS-Sentinel--SEDAPAL
+npm install
